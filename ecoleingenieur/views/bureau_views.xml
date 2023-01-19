@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="ecoleingenieur_bureau_action" model="ir.actions.act_window">
+        <field name="name">bureau</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">ecoleingenieur.bureau</field>
+        <field name="search_view_id" eval="False"/>
+        <field name="view_id" eval="False"/>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+          </p>
+        </field>
+    </record>
+    <record id="ecoleingenieur_bureau_tree" model="ir.ui.view">
+        <field name="name">ecoleingenieur.bureau.tree</field>
+        <field name="model">ecoleingenieur.bureau</field>
+        <field name="arch" type="xml">
+            <tree string="La liste des bureau">
+                <field name="name"/>
+                <field name="batiment"/>
+                <field name="centre"/>  
+            </tree>
+        </field>
+    </record>
+    <record id="ecoleingenieur_bureau_search" model="ir.ui.view">
+        <field name="model">ecoleingenieur.bureau</field>
+            <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="batiment"/>
+                <field name="centre"/> 
+            </search>
+        </field>
+    </record>
+    <record id="ecoleingenieur_bureau_form" model="ir.ui.view">
+        <field name="name">ecoleingenieur.bureau.form</field>
+        <field name="model">ecoleingenieur.bureau</field>
+        <field name="arch" type="xml">
+            <form string="Détail bureau">
+                <sheet>  
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="batiment"/>
+                            <field name="centre"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Intervenant">
+                            <field name="intervenant_ids">
+                                <tree>
+                                    <field name="name"/> 
+                                    <field name="prenom"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <menuitem
+        id="menu_ecoleingenieur_bureau"
+        name="bureau"
+        parent="menu_ecoleingenieur_root"
+        action="ecoleingenieur_bureau_action"
+        sequence="3"/>
+
+</odoo>

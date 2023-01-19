@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ecoleingenieur_cours,access.ecoleingenieur.cours,model_ecoleingenieur_cours,,1,1,1,1
+access_ecoleingenieur_intervenant,access.ecoleingenieur.intervenant,model_ecoleingenieur_intervenant,,1,1,1,1
+access_ecoleingenieur_bureau,access.ecoleingenieur.bureau,model_ecoleingenieur_bureau,,1,1,1,1
+access_ecoleingenieur_specialite,access.ecoleingenieur.specialite,model_ecoleingenieur_specialite,,1,1,1,1
+

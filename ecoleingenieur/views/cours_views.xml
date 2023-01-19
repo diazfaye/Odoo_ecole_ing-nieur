@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="ecoleingenieur_cours_action" model="ir.actions.act_window">
+        <field name="name">cours</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">ecoleingenieur.cours</field>
+        <field name="search_view_id" eval="False"/>
+        <field name="view_id" eval="False"/>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+          </p>
+        </field>
+    </record>
+    <record id="ecoleingenieur_cours_tree" model="ir.ui.view">
+        <field name="name">ecoleingenieur.cours.tree</field>
+        <field name="model">ecoleingenieur.cours</field>
+        <field name="arch" type="xml">
+            <tree string="La liste des cours">
+                <field name="name"/>
+                <field name="numero"/>
+                <field name="titre"/>
+                <field name="autype"/>
+                <field name="date_debut"/>
+                <field name="date_fin"/>
+                <field name="intervenant_id"/>   
+            </tree>
+        </field>
+    </record>
+    <record id="ecoleingenieur_cours_search" model="ir.ui.view">
+        <field name="model">ecoleingenieur.cours</field>
+            <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="numero"/>
+                <field name="titre"/>
+                <field name="autype"/>
+                 <field name="date_debut"/>
+                <field name="date_fin"/>  
+            </search>
+        </field>
+    </record>
+    <record id="ecoleingenieur_cours_form" model="ir.ui.view">
+        <field name="name">ecoleingenieur.cours.form</field>
+        <field name="model">ecoleingenieur.cours</field>
+        <field name="arch" type="xml">
+            <form string="Détail cours">
+                <sheet>  
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="numero"/>
+                            <field name="titre"/>
+                            <field name="autype"/>
+                            <field name="date_debut"/>
+                            <field name="date_fin"/>
+                            <field name="intervenant_id"/> 
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <menuitem
+        name="ECOLEINGENIEUR"
+        id="menu_ecoleingenieur_root"/>
+
+
+    <menuitem
+        id="menu_ecoleingenieur_cours"
+        name="Cours"
+        parent="menu_ecoleingenieur_root"
+        action="ecoleingenieur_cours_action"
+        sequence="1"/>
+
+</odoo>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="ecoleingenieur_intervenant_action" model="ir.actions.act_window">
+        <field name="name">intervenant</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">ecoleingenieur.intervenant</field>
+        <field name="search_view_id" eval="False"/>
+        <field name="view_id" eval="False"/>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+          </p>
+        </field>
+    </record>
+    <record id="ecoleingenieur_intervenant_tree" model="ir.ui.view">
+        <field name="name">ecoleingenieur.intervenant.tree</field>
+        <field name="model">ecoleingenieur.intervenant</field>
+        <field name="arch" type="xml">
+            <tree string="La liste des intervenant">
+                <field name="name"/>
+                <field name="prenom"/>
+                <field name="telephone_a"/>
+                <field name="telephone_b"/>
+                <field name="telephone_c"/>
+            </tree>
+        </field>
+    </record>
+    <record id="ecoleingenieur_intervenant_search" model="ir.ui.view">
+        <field name="model">ecoleingenieur.intervenant</field>
+            <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="prenom"/>
+                <field name="telephone_a"/>
+                <field name="telephone_b"/>
+                <field name="telephone_c"/>
+            </search>
+        </field>
+    </record>
+    <record id="ecoleingenieur_intervenant_form" model="ir.ui.view">
+        <field name="name">ecoleingenieur.intervenant.form</field>
+        <field name="model">ecoleingenieur.intervenant</field>
+        <field name="arch" type="xml">
+            <form string="Détail intervenant">
+                <sheet>  
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="prenom"/>
+                            <field name="telephone_a"/>
+                            <field name="telephone_b"/>
+                            <field name="telephone_c"/>
+                            <field name="bureau_id"/>
+                            <field name="specialite_ids"
+                            widget="many2many_tags"/> 
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Cours">
+                            <field name="cours_ids">
+                                <tree>
+                                    <field name="name"/> 
+                                    <field name="numero"/>
+                                    <field name="titre"/>
+                                    <field name="autype"/>
+                                    <field name="date_debut"/>
+                                    <field name="date_fin"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    <notebook>
+                        <page string="Spécialités">
+                            <field name="specialite_ids">
+                                <tree>
+                                    <field name="name"/> 
+                                    <field name="domaine"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    <notebook>
+                        <page string="Bureaux">
+                            <field name="bureau_id">
+                                <tree>
+                                    <field name="name"/> 
+                                    <field name="batiment"/>
+                                    <field name="centre"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>   
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <menuitem
+        id="menu_ecoleingenieur_intervenant"
+        name="intervenant"
+        parent="menu_ecoleingenieur_root"
+        action="ecoleingenieur_intervenant_action"
+        sequence="2"/>
+
+</odoo>

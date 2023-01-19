@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="report_ecoleingenieurintervenant_document">
+    <t t-call="web.external_layout">
+        <div class="page" style="padding-top: 25px;">
+            <p>Nom : <span t-field="o.name"/></p><br/>
+            <p>Prénom : <span t-field="o.prenom"/></p><br/>
+            <p>Téléphone 1 : <span t-field="o.telephone_a"/></p><br/>
+            <p>Téléphone 2 : <span t-field="o.telephone_b"/></p><br/>
+            <p>Téléphone 3 : <span t-field="o.telephone_c"/></p><br/>
+        </div>
+        <h3 style="text-align:center;color:#009FE3;margin-top:50px;">ECOLEINGENIEURTDSI</h3>
+       
+                  <div t-foreach="o.cours_ids" t-as="cours">
+                        <!-- eliminer les lignes vides -->
+                        <p> Le cours '<span t-esc="cours.titre" style="font-weight: bold;"/>
+                        ',n°<span t-esc="cours.numero"/> de l'année <span t-esc="cours.name"/>
+                         est donné par <span t-field="o.prenom"  style="color:#009FE3;"/> <span t-field="o.name"  style="color:#009FE3;"/>
+                          entre le <span t-esc="cours.date_debut"/> et le <span t-esc="cours.date_fin"/>
+                        . C'est un cours de type ' <span t-esc="cours.autype"/>
+                        '.  <span t-field="o.prenom" style="color:#009FE3;"/> <span t-field="o.name" style="color:#009FE3;"/> a le bureau <span t-esc="o.bureau_id.name"/> au bâtiment <span t-esc="o.bureau_id.batiment"/>
+                         de <span t-esc="o.bureau_id.centre"/>. Il a les numéros de téléphone <span t-field="o.telephone_a" style="font-weight: bold;"/> , <span t-field="o.telephone_b"/> et <span t-field="o.telephone_c"/>.
+                        </p>
+                    </div>
+                    <div>
+                        <p style="font-weight: bold;">Il possède les spécialités suivantes :</p>
+                        <ul t-foreach="o.specialite_ids" t-as="specialitee">
+                           <li>Domaine :<span t-esc="specialitee.domaine"/>;Spécialité : <span t-esc="specialitee.name"/></li>
+                        </ul>
+                    </div>
+        <div class="row">
+                <h3 style="text-align:center;color:#009FE3;margin-top:50px;">LISTE COURS </h3>
+            </div>
+        <div class="row">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center" style="color: #FFFFFF;background-color: #009FE3;"><strong>N°</strong></th>
+                        <th class="text-center" style="color: #FFFFFF;background-color: #009FE3;"><strong>N° Cours</strong></th>
+                        <th class="text-center" style="color: #FFFFFF;background-color: #009FE3;"><strong>Intervenant</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr t-foreach="o.cours_ids" t-as="cours">
+                        <!-- eliminer les lignes vides -->
+                        <td class="text-center"><span t-esc="cours_index + 1"/>
+                        </td>
+                        <td class="text-center"><span t-esc="cours.numero" />
+                        </td>
+                        <td class="text-center"><span t-esc="cours.intervenant_id.name" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </t>
+</template>
+<template id="report_ecoleingenieurintervenant">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="ecoleingenieur.report_ecoleingenieurintervenant_document"/>
+        </t>
+    </t>
+</template>
+
+
+</odoo>
